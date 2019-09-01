@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Main_2638_치즈 {
+public class Main_2638_치즈_Queue {
 	static int[] dx = {-1, 1, 0, 0};
 	static int[] dy = {0, 0, -1, 1};
 	static int N;
@@ -17,7 +17,7 @@ public class Main_2638_치즈 {
 	static int result;
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer st = new StringTokenizer(br.readLine().trim());
+		StringTokenizer st = new StringTokenizer(br.readLine());
 		
 		N = Integer.parseInt(st.nextToken());
 		M = Integer.parseInt(st.nextToken());
@@ -25,11 +25,11 @@ public class Main_2638_치즈 {
 		map = new int[N][M];
 		cheeze = 0;
 		
-		for (int i = 0; i < N; i++) {
-			String s = br.readLine().trim();
-			for (int j = 0; j < M; j++) {
-				map[i][j] = s.charAt(j * 2) - '0';
-				if(map[i][j] == 1) cheeze++;
+		for (int i = 0; i < N; ++i) {
+			String s = br.readLine();
+			for (int j = 0; j < M; ++j) {
+				map[i][j] = s.charAt(j + j) - '0';
+				if(map[i][j] == 1) ++cheeze;
 			}
 		}
 		
@@ -45,10 +45,10 @@ public class Main_2638_치즈 {
 			int start = front;
 			int end = rear;
 			
-			for (int i = start; i < end; i++) {
+			for (int i = start; i < end; ++i) {
 				int[] location = q[++front];
 				
-				for (int j = 0; j < 4; j++) {
+				for (int j = 0; j < 4; ++j) {
 					int x = location[0] + dx[j];
 					int y = location[1] + dy[j];
 					
@@ -66,20 +66,20 @@ public class Main_2638_치즈 {
 		
 		// 치즈가 다 녹아 없어질때까지 반복한다.
 		while(cheeze > 0) {
-			result++;
+			++result;
 			
 			// 치즈가 녹을수 있는 구간을 구해서 체크해 놓는다.
 			boolean[][] change = new boolean[N][M];
 			
-			for (int i = 0; i < N; i++) {
-				for (int j = 0; j < M; j++) {
+			for (int i = 0; i < N; ++i) {
+				for (int j = 0; j < M; ++j) {
 					if(map[i][j] == 1) {
 						int count = 0;
-						for (int k = 0; k < 4; k++) {
+						for (int k = 0; k < 4; ++k) {
 							int x = i + dx[k];
 							int y = j + dy[k];
 							
-							if(map[x][y] == -1) count++;
+							if(map[x][y] == -1) ++count;
 						}
 						
 						if(count > 1) {
@@ -91,11 +91,11 @@ public class Main_2638_치즈 {
 			
 			// 치즈를 녹이고 녹은 치즈의 갯수를 구해서 전체에서 뺀다
 			int count = 0;
-			for (int i = 0; i < N; i++) {
-				for (int j = 0; j < M; j++) {
+			for (int i = 0; i < N; ++i) {
+				for (int j = 0; j < M; ++j) {
 					if(change[i][j]) {
 						map[i][j] = -1;
-						count++;
+						++count;
 					}
 				}
 			}
@@ -103,11 +103,11 @@ public class Main_2638_치즈 {
 			cheeze -= count;
 			
 			// 치즈가 녹은 이후 공기에 노출되는 공간을 -1로 바꿔준다.
-			for (int i = 0; i < N; i++) {
-				for (int j = 0; j < M; j++) {
+			for (int i = 0; i < N; ++i) {
+				for (int j = 0; j < M; ++j) {
 					if(map[i][j] == 0) {
 						boolean flag = false;
-						for (int k = 0; k < 4; k++) {
+						for (int k = 0; k < 4; ++k) {
 							int x = i + dx[k];
 							int y = j + dy[k];
 							
@@ -126,10 +126,10 @@ public class Main_2638_치즈 {
 								int start = front;
 								int end = rear;
 								
-								for (int k = start; k < end; k++) {
+								for (int k = start; k < end; ++k) {
 									int[] location = q[++front];
 									
-									for (int l = 0; l < 4; l++) {
+									for (int l = 0; l < 4; ++l) {
 										int x = location[0] + dx[l];
 										int y = location[1] + dy[l];
 										
