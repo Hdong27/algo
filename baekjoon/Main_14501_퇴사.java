@@ -24,19 +24,20 @@ public class Main_14501_퇴사 {
 	 
 	    for (int i = 2; i <= N; i++) {
 	        for (int j = 1; j < i; j++) {
-	            if (i - j >= t[j]) {	// 도달할 수 있는 지점
-	                dp[i] = Math.max(p[i] + dp[j], dp[i]);
+	            if (i >= t[j] + j) {	// 도달할 수 있는 지점
+	            	dp[i] = p[i] + dp[j] > dp[i] ? p[i] + dp[j] : dp[i];
 	            }
 	        }
 	    }
 	 
-	    int max = 0;
+	    int result = 0;
 	 
 	    for (int i = 1; i <= N; i++) {
 	        if (i + t[i] <= N + 1) {	// 유효 범위 안에 들어오면
-	        	max = max < dp[i] ? dp[i] : max;
+	        	result = result < dp[i] ? dp[i] : result;
 	        }
 	    }
-	    System.out.println(max);
+	    
+	    System.out.println(result);
 	}
 }
