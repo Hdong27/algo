@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Main_15654_N°úM6 {
+public class Main_15655_N°úM6 {
 	private static int N;
 	private static int M;
 	static int[] save;

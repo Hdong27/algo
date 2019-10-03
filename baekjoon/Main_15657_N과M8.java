@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Main_15654_N°úM7 {
+public class Main_15657_N°úM8 {
 	private static int N;
 	private static int M;
 	static int[] arr;
@@ -26,19 +26,19 @@ public class Main_15654_N°úM7 {
 		Arrays.sort(arr);
 		
 		for (int i = 0; i < N; i++) {
-			dfs(1, arr[i] + " ");
+			dfs(1, arr[i] + " ", i);
 		}
 		
 	}
 	
-	static void dfs(int cnt, String result) {
+	static void dfs(int cnt, String result, int start) {
 		if(cnt == M) {
 			System.out.println(result);
 			return;
 		}
 		
-		for (int i = 0; i < N; i++) {
-			dfs(cnt+1, result + arr[i] + " ");
+		for (int i = start; i < N; i++) {
+			dfs(cnt+1, result + arr[i] + " ", i);
 		}
 	}
 }
