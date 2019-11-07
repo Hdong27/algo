@@ -18,9 +18,7 @@ public class Main_17825_¡÷ªÁ¿ß¿∑≥Ó¿Ã {
 		max = 0;
 		
 		String num = "1";
-		
-//		dfs("1", 1);
-		
+
 		for (int a = 1; a <= 2; a++) {
 			for (int b = 1; b <= 3; b++) {
 				for (int c = 1; c <= 4; c++) {
@@ -42,17 +40,6 @@ public class Main_17825_¡÷ªÁ¿ß¿∑≥Ó¿Ã {
 		}
 		
 		System.out.println(max);
-	}
-	
-	static void dfs(String num, int cnt) {
-		if(cnt == 10) {
-			function(num);
-			return;
-		}
-		
-		for (int i = 1; i <= 4; i++) {
-			dfs(num + i, cnt + 1);
-		}
 	}
 
 	static void function(String s) {
